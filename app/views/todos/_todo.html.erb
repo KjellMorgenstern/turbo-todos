@@ -10,6 +10,7 @@
           <%= button_to "Mark complete", todo_path(todo, todo: { status: 'complete'}), method: :patch, class: "bg-green-50 px-3 py-2 rounded inline-flex items-center justify-center text-green-600" %>
         <% end %>
 
+        <%= button_to "Details", todo_path(todo), 'data-turbo-frame': '_top', method: :get, class: "bg-blue-50 px-3 py-2 rounded inline-flex items-center justify-center" %>
         <%= button_to "Delete", todo_path(todo), method: :delete, class: "bg-red-50 px-3 py-2 rounded inline-flex items-center justify-center text-red-600" %>
       </div>
     </div>
