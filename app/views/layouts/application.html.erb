@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+          if (error.constructor.name === "DOMException" && error.message.startsWith("Failed to execute 'replaceState'")) {
+              // This is a chrome bug. See https://github.com/hotwired/turbo/issues/536
+              window.location.reload();
+          }
+      }
+    </script>
+
     <title>TurboTodos</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
