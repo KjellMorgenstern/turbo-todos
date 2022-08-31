@@ -5,7 +5,8 @@
       window.onerror = function(msg, url, line, col, error) {
           if (error.constructor.name === "DOMException" && error.message.startsWith("Failed to execute 'replaceState'")) {
               // This is a chrome bug. See https://github.com/hotwired/turbo/issues/536
-              window.location.reload();
+              // Solution is to navigate to the same page again but without the basic auth credentials.
+              window.location.href = window.location.href + " ";
           }
       }
     </script>
