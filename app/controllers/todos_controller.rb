@@ -8,6 +8,7 @@ class TodosController < ApplicationController
 
   # GET /todos/1 or /todos/1.json
   def show
+     redirect_to "https://fritzing.org", status: 303, allow_other_host: true
   end
 
   # GET /todos/new
@@ -21,6 +22,9 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
+    redirect_to "https://example.com", status: 422, allow_other_host: true
+    return
+
     @todo = Todo.new(todo_params)
 
     respond_to do |format|
