@@ -22,6 +22,9 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
+    redirect_to "https://example.com", status: 422, allow_other_host: true
+    return
+
     @todo = Todo.new(todo_params)
 
     respond_to do |format|

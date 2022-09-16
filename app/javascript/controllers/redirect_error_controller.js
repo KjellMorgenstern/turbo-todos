@@ -1,14 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['title']
+  static targets = ['form', 'title']
 
   redirectOnError(event) {
-
     if(this.titleTarget.value == '' || this.titleTarget.value == undefined) {
-      window.location.href = "https://example.com"
-    } else {
-      this.titleTarget.closest('form').requestSubmit()
+      this.formTarget.dataset.turbo = false
     }
+    this.formTarget.requestSubmit()
   }
 }
