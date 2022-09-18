@@ -22,10 +22,16 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
-    redirect_to "https://example.com", status: 422, allow_other_host: true
-    return
-
     @todo = Todo.new(todo_params)
+
+    # super simple 'authentication' to demonstrate the validity of the use case
+    secret = "trust me"
+    if not todo_params["title"].include? secret
+      redirect_to "https://example.com", status: 422, allow_other_host: true
+      return
+    else
+      @todo.title.slice! secret
+    end
 
     respond_to do |format|
       if @todo.save
